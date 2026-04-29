@@ -115,3 +115,42 @@ http://localhost:8000
 - FastAPI imports correctly
 - Sample CSV analysis succeeds and returns KPI, chart, story, and shareable report data
 - Chat endpoint succeeds in fallback mode when Ollama is unavailable
+
+## Production Deployment
+
+ReportGenie AI is ready for production deployment. See [DEPLOYMENT.md](DEPLOYMENT.md) for complete instructions.
+
+### Quick Start (Vercel + Railway)
+
+1. **Deploy Frontend to Vercel**
+   ```bash
+   git push
+   ```
+   Frontend automatically deploys to your Vercel account.
+
+2. **Deploy Backend to Railway**
+   - Connect your GitHub repo at https://railway.app
+   - Railway auto-deploys and provides a public URL
+
+3. **Connect Frontend to Backend**
+   - In Vercel dashboard, add environment variable:
+   ```
+   VITE_API_URL=https://your-railway-backend-url.railway.app
+   ```
+
+4. **Redeploy frontend** to pick up the new environment variable.
+
+### Docker Support
+
+Deploy with Docker:
+```bash
+docker build -t reportgenie-ai .
+docker run -p 8000:8000 reportgenie-ai
+```
+
+Or with docker-compose:
+```bash
+docker-compose up
+```
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions and alternative hosting platforms (Render, Heroku, etc.).

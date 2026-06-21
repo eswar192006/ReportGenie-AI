@@ -120,7 +120,7 @@ http://localhost:8000
 
 ReportGenie AI is ready for production deployment. See [DEPLOYMENT.md](DEPLOYMENT.md) for complete instructions.
 
-### Quick Start (Vercel + Railway)
+### Quick Start (Vercel + Render - Free)
 
 1. **Deploy Frontend to Vercel**
    ```bash
@@ -128,15 +128,20 @@ ReportGenie AI is ready for production deployment. See [DEPLOYMENT.md](DEPLOYMEN
    ```
    Frontend automatically deploys to your Vercel account.
 
-2. **Deploy Backend to Railway**
-   - Connect your GitHub repo at https://railway.app
-   - Railway auto-deploys and provides a public URL
+2. **Deploy Backend to Render**
+   - Go to https://render.com
+   - New Web Service → Connect GitHub
+   - Select this repository
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `uvicorn app.main:app --host 0.0.0.0 --port 8000`
+   - Click "Create Web Service" (free, no credit card needed)
 
 3. **Connect Frontend to Backend**
    - In Vercel dashboard, add environment variable:
    ```
-   VITE_API_URL=https://your-railway-backend-url.railway.app
+   VITE_API_URL=https://your-render-service-url.onrender.com
    ```
+   (Copy the URL from Render dashboard)
 
 4. **Redeploy frontend** to pick up the new environment variable.
 
@@ -153,4 +158,4 @@ Or with docker-compose:
 docker-compose up
 ```
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions and alternative hosting platforms (Render, Heroku, etc.).
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions and alternative hosting platforms (Railway, Heroku, etc.).

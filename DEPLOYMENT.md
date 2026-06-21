@@ -34,9 +34,32 @@ The React frontend is configured to deploy automatically to Vercel.
 
 The FastAPI backend needs to be deployed separately. Choose one of these options:
 
-### Option 1: Railway (Recommended)
+### Option 1: Render (Recommended - Free)
 
-1. **Create a Railway account** at https://railway.app
+1. **Create a Render account** at https://render.com (no credit card required)
+
+2. **Deploy**
+   - New Web Service
+   - Connect to GitHub repository
+   - Select the repo and main branch
+
+3. **Configure Render**
+   - **Runtime:** Python 3.11
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port 8000`
+
+4. **Deploy**
+   - Click "Create Web Service"
+   - Render auto-deploys on every git push
+   - No credit card needed, completely free
+
+5. **Get your backend URL**
+   - Copy the service URL from Render dashboard (e.g., `https://reportgenie-backend.onrender.com`)
+   - Set `VITE_API_URL` in your Vercel environment variables to this URL
+
+### Option 2: Railway
+
+1. **Create a Railway account** at https://railway.app (free tier: $5/month credits)
 
 2. **Connect GitHub**
    - New Project → Deploy from GitHub
@@ -56,23 +79,9 @@ The FastAPI backend needs to be deployed separately. Choose one of these options
    - Copy the generated domain from Railway dashboard
    - Set `VITE_API_URL` in your Vercel environment variables to this URL
 
-### Option 2: Render
-
-1. **Create a Render account** at https://render.com
-
-2. **Deploy**
-   - New Web Service
-   - Connect to GitHub
-   - Set Build Command: `pip install -r requirements.txt`
-   - Set Start Command: `uvicorn app.main:app --host 0.0.0.0 --port 8000`
-
-3. **Get your backend URL**
-   - Copy the service URL from Render dashboard
-   - Set `VITE_API_URL` in Vercel to this URL
-
 ### Option 3: Heroku
 
-1. **Create a Heroku account** at https://heroku.com
+1. **Create a Heroku account** at https://heroku.com (paid only, no free tier)
 
 2. **Install Heroku CLI** and authenticate
 

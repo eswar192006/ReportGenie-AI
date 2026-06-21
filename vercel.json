@@ -3,26 +3,16 @@
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
+  "env": {
+    "VITE_API_URL": {
+      "description": "Backend API URL (e.g., https://reportgenie-backend.onrender.com)",
+      "required": false
+    }
+  },
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/outputs/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/sample_data/(.*)",
-      "dest": "/api/index.py"
-    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "PYTHONPATH": "/var/task",
-    "LOG_LEVEL": "INFO"
-  }
+  ]
 }

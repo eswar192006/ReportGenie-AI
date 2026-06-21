@@ -3,13 +3,6 @@
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
-  "functions": {
-    "api/**/*.py": {
-      "runtime": "python@3.11",
-      "maxDuration": 60,
-      "memory": 1024
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",

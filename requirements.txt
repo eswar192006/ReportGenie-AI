@@ -6,3 +6,4 @@ plotly==6.1.1
 kaleido==1.2.0
 python-multipart>=0.0.7
 python-dotenv==1.0.0
+mangum==0.17.0

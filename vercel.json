@@ -3,28 +3,33 @@
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
-  "env": {
-    "VITE_API_URL": {
-      "description": "Backend API URL (e.g., https://reportgenie-backend.herokuapp.com or your deployed API endpoint)",
-      "required": false
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "python@3.11",
+      "maxDuration": 60,
+      "memory": 1024
     }
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "${VITE_API_URL}/api/:path*"
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/outputs/:path*",
-      "destination": "${VITE_API_URL}/outputs/:path*"
+      "src": "/outputs/(.*)",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/sample_data/:path*",
-      "destination": "${VITE_API_URL}/sample_data/:path*"
+      "src": "/sample_data/(.*)",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/:path*",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "/var/task",
+    "LOG_LEVEL": "INFO"
+  }
 }
